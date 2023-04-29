@@ -1,9 +1,12 @@
+import { Link } from "react-router-dom";
 import { Auth } from "./Auth";
 
 export const Header = () => {
   return (
     <header>
-      <h1>Bazaar</h1>
+      <h1>
+        <Link to="/">Bazaar</Link>
+      </h1>
       <nav>
         <Auth />
       </nav>
