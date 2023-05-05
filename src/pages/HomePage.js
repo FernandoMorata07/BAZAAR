@@ -1,3 +1,4 @@
+import { ErrorMessage } from "../components/ErrorMessage";
 import { VentasList } from "../components/VentasList";
 import useVentas from "../hooks/useVentas";
 
@@ -5,7 +6,7 @@ export const HomePage = () => {
   const { ventas, loading, error } = useVentas();
 
   if (loading) return <p>cargando Ventas</p>;
-  if (error) return <p>{error}</p>;
+  if (error) return <ErrorMessage message={error} />;
   console.log(ventas);
   return (
     <section>

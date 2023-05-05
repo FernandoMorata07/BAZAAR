@@ -16,9 +16,9 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/venta/:id" element={<VentaPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/venta/:id" element={<VentaPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />

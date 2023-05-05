@@ -3,7 +3,7 @@ import { getAllVentasService } from "../services";
 
 const useVentas = () => {
   const [ventas, setVentas] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   useEffect(() => {

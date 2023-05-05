@@ -1,4 +1,4 @@
-import { Venta } from "./Ventas";
+import { Venta } from "./Venta";
 
 export const VentasList = ({ ventas }) => {
   return ventas.length ? (
