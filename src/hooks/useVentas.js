@@ -23,7 +23,11 @@ const useVentas = () => {
     loadVentas();
   }, []);
 
-  return { ventas, loading, error };
+  const addVenta = (venta) => {
+    setVentas([venta, ...ventas]);
+  };
+
+  return { ventas, loading, error, addVenta };
 };
 
 export default useVentas;
