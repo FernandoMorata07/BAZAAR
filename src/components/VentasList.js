@@ -1,11 +1,11 @@
 import { Venta } from "./Venta";
 
-export const VentasList = ({ ventas }) => {
+export const VentasList = ({ ventas, ventaRemove }) => {
   return ventas.length ? (
     <ul>
       {ventas.map((venta) => (
         <li key={venta.id}>
-          <Venta venta={venta} />
+          <Venta venta={venta} ventaRemove={ventaRemove} />
         </li>
       ))}
     </ul>

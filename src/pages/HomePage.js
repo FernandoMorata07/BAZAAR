@@ -6,7 +6,7 @@ import { AuthContext } from "../context/AuthContext";
 import useVentas from "../hooks/useVentas";
 
 export const HomePage = () => {
-  const { ventas, loading, error, addVenta } = useVentas();
+  const { ventas, loading, error, addVenta, ventaRemove } = useVentas();
   const { user } = useContext(AuthContext);
 
   if (loading) return <p>cargando Ventas</p>;
@@ -14,10 +14,9 @@ export const HomePage = () => {
   console.log(ventas);
   return (
     <section>
-      <h1>Lista de Artículos en Venta</h1>
       {user ? <NewVenta addVenta={addVenta} /> : null}
-
-      <VentasList ventas={ventas} />
+      <h1>Lista de Artículos en Venta</h1>
+      <VentasList ventas={ventas} ventaRemove={ventaRemove} />
     </section>
   );
 };

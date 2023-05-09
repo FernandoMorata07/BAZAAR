@@ -6,6 +6,7 @@ export const NewVenta = ({ addVenta }) => {
   const [error, setError] = useState("");
   const [sending, setSending] = useState(false);
   const { token } = useContext(AuthContext);
+  const [image, setImage] = useState(null);
 
   const handleForm = async (e) => {
     e.preventDefault();
@@ -16,6 +17,8 @@ export const NewVenta = ({ addVenta }) => {
       const data = new FormData(e.target);
       const venta = await sendVentaService({ data, token });
       addVenta(venta);
+      e.target.reset();
+      setImage(null);
     } catch (error) {
       setError(error.message);
     } finally {
@@ -33,7 +36,22 @@ export const NewVenta = ({ addVenta }) => {
 
       <fieldset>
         <label htmlFor="image">Imagen</label>
-        <input type="file" id="image" name="image" accept="image/*" />
+        <input
+          type="file"
+          id="image"
+          name="image"
+          accept="image/*"
+          onChange={(e) => setImage(e.target.files[0])}
+        />
+        {image ? (
+          <figure>
+            <img
+              src={URL.createObjectURL(image)}
+              alt="Preview"
+              style={{ width: "100px" }}
+            />
+          </figure>
+        ) : null}
       </fieldset>
 
       <button>Enviar</button>

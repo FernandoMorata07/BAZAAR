@@ -27,7 +27,11 @@ const useVentas = () => {
     setVentas([venta, ...ventas]);
   };
 
-  return { ventas, loading, error, addVenta };
+  const ventaRemove = (id) => {
+    setVentas(ventas.filter((venta) => venta.id !== id));
+  };
+
+  return { ventas, loading, error, addVenta, ventaRemove };
 };
 
 export default useVentas;
