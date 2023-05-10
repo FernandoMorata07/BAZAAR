@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { getAllVentasService } from "../services";
+import { getAllVentasService, getUserVentasService } from "../services";
 
-const useVentas = () => {
+const useVentas = (id) => {
   const [ventas, setVentas] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -11,7 +11,9 @@ const useVentas = () => {
       try {
         setLoading(true);
 
-        const data = await getAllVentasService();
+        const data = id
+          ? await getUserVentasService(id)
+          : await getAllVentasService();
 
         setVentas(data);
       } catch (error) {
@@ -21,7 +23,7 @@ const useVentas = () => {
       }
     };
     loadVentas();
-  }, []);
+  }, [id]);
 
   const addVenta = (venta) => {
     setVentas([venta, ...ventas]);

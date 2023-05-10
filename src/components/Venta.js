@@ -32,7 +32,7 @@ export const Venta = ({ venta, ventaRemove }) => {
         />
       ) : null}
       <p>
-        By <Link to={`/user/${user.id}`}>{venta.email}</Link> on{" "}
+        By <Link to={`/user/${venta.user_id}`}>{venta.email}</Link> on{" "}
         <Link to={`/venta/${venta.id}`}>
           {" "}
           {new Date(venta.created_at).toLocaleString()}

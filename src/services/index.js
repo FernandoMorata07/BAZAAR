@@ -67,6 +67,31 @@ export const getMyUserDataService = async ({ token }) => {
   return json.data;
 };
 
+export const getUserDataService = async (id) => {
+  const response = await fetch(`${process.env.REACT_APP_BACKEND}/user/${id}`);
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data;
+};
+
+export const getUserVentasService = async (id) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/user/${id}/ventas`
+  );
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data;
+};
 export const sendVentaService = async ({ data, token }) => {
   const response = await fetch(`${process.env.REACT_APP_BACKEND}`, {
     method: "POST",
